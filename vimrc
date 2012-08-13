@@ -1,6 +1,15 @@
 "let's unleash the beast within gvim
 set nocompatible
 
+" I use pathogen for vim plugin installation. Let's spread the infection!
+call pathogen#infect()
+call pathogen#helptags()
+
+" Let's open vimrc with Ctrl-Alt-e. I put my vimrc inside .vim so $MYVIMRC
+" doesn't quiet work
+map <C-M-E> <Esc>:tabedit ~/.vim/vimrc<CR>
+
+
 " Sets how many lines of history VIM should remember
 set history=1000
 
@@ -29,10 +38,7 @@ set showcmd
 
 " code folding stuff
 set foldmethod=marker
-
-" enable file type plugins
-filetype plugin on
-filetype indent on
+set foldmethod=indent
 
 " needed for syntax highlighting and stuff
 filetype on
@@ -138,10 +144,14 @@ if has("gui_running")
 endif    
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
+augroup last_edit_pos
+    au!
+    autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+augroup END    
+        
 
 " Remember info about open buffers on close
 "set viminfo^=%
@@ -151,10 +161,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" I use pathogen for vim plugin installation. Let's spread the infection!
-call pathogen#infect()
-call pathogen#helptags()
 
 " CTRL-C, CTRL-X and CTRL-V for copy-cut-pasting to system clipboard
 imap <C-V> <Esc>"+]p
@@ -182,11 +188,17 @@ vmap <C-^> <Esc>`<i<sup><Esc>`>llllla</sup><Esc>
 vmap <C-_> <Esc>`<i<sub><Esc>`>llllla</sub><Esc>
 
 " Delete trailing white space on save for all .py files.
-autocmd BufWrite *.py :call DeleteTrailingWS()
+augroup delete_trailing_spaces
+    au!
+    autocmd BufWrite *.py :call DeleteTrailingWS()
+augroup END    
+
 
 " Template files. Open new file using vim and if there is a skeleton file in
 " templates for that extension, that is loaded. 
-autocmd! BufNewFile * silent! 0r ~/.vim/templates/skeleton.%:e
+augroup template_files
+    autocmd! BufNewFile * silent! 0r ~/.vim/templates/skeleton.%:e
+augroup END    
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Automatic completion settings 
