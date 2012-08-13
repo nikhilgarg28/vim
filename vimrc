@@ -127,10 +127,10 @@ set incsearch
 set wildmode=longest,list,full
 set wildmenu
 
-
 " Which is today's colorscheme?
 "colorscheme Mustang
-colorscheme Wombat
+colorscheme wombat
+
 
 " A colored column as marker
 set colorcolumn=82
