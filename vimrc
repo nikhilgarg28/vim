@@ -15,6 +15,12 @@ filetype indent on
 let mapleader = ","
 let g:mapleader = ","
 
+" Time out on mapping after two seconds, time out on key codes after
+" a tenth of a second
+set timeout 
+set timeoutlen=2000 
+set ttimeoutlen=100
+
 " Fast saving. <leader>w would save the file
 nmap <leader>w :w!<cr>
 
@@ -148,6 +154,7 @@ set tm=500
 
 " I use pathogen for vim plugin installation. Let's spread the infection!
 call pathogen#infect()
+call pathogen#helptags()
 
 " CTRL-C, CTRL-X and CTRL-V for copy-cut-pasting to system clipboard
 imap <C-V> <Esc>"+]p
@@ -222,15 +229,24 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree functionality
+" => Nerd Tree and Nerdtree-tabs functionality
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Autopen NERDTree and focus cursor in new document  
-autocmd VimEnter * NERDTree  
-autocmd VimEnter * wincmd p
+" This is not needed now as nerdtree-tabs by default ensures this
+"autocmd VimEnter * NERDTree  
+"autocmd VimEnter * wincmd p
 
-" Toggle Nerd tree using F2
-map <F2> :NERDTreeToggle<CR>
+" Toggle Nerd tree using F2.
+"map <F2> :NERDTreeToggle<CR>
+" NerdTreeMirrorToggle of nerd-tree-tabs is a smarter option
+map <F2> :NERDTreeMirrorToggle<CR>
+
+" Shift-F2 toggles nerdtree in all tabs
+map <S-F2> :NerdTreeTabsToggle<CR>
+
+" Don't synchronise view(scroll and cursor position)of different nerdtrees
+let g:nerdtree_tabs_synchronize_view=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
