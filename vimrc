@@ -37,7 +37,7 @@ nmap <leader>w :w!<cr>
 set showcmd
 
 " code folding stuff
-set foldmethod=marker
+"set foldmethod=marker
 set foldmethod=indent
 
 " needed for syntax highlighting and stuff
@@ -84,14 +84,14 @@ set hlsearch
 set cursorline
 
 " Disable arrow keys in normal and insert mode. Better get used to h,j,k,l
-"nnoremap <"up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+nnoremap <"up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " Move over screen lines instead of file-lines. Useful for longer lines.
 nnoremap j gj
@@ -160,7 +160,6 @@ augroup END
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
 
 " CTRL-C, CTRL-X and CTRL-V for copy-cut-pasting to system clipboard
 imap <C-V> <Esc>"+]p
@@ -172,9 +171,15 @@ nnoremap <leader>v <C-V>
 " CTRL-A in normal mode for select all
 nmap <C-A> <Esc>G$vgg 
 
-" Enter in normal mode works like it does in insert mode. Useful in formatting a
-" text while navigating quickly
-nmap <CR> i<CR><Esc>
+" Break lines using K . K in normal mode works exactly opposite of J. 
+nmap <S-K> i<CR><Esc>
+
+" Use Enter in normal mode to open new line below the current line
+nmap <CR> o<Esc>k
+
+" Use Shift-enter in normal to open new line above the current line
+nmap <S-CR> O<Esc>j
+
 
 " Window management mappings
 nmap <C-h> <C-W>h
