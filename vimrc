@@ -84,6 +84,9 @@ set textwidth=80
 " Highlight search items
 set hlsearch
 
+" But unhighlight them when done with search
+map <leader>/ <Esc>:noh<CR>
+
 " Set cursorline
 set cursorline
 
