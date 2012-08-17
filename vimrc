@@ -30,6 +30,10 @@ set timeout
 set timeoutlen=2000 
 set ttimeoutlen=100
 
+" Don't clutter my projects with back up files, damnit!
+set backupdir=~/vim/tmp
+set directory=~/vim/tmp
+
 " Fast saving. <leader>w would save the file
 nmap <leader>w :w!<cr>
 
