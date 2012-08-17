@@ -81,11 +81,14 @@ set ruler
 set wrap
 set textwidth=80 
 
+" Incremental search is powerful
+set incsearch
+
 " Highlight search items
 set hlsearch
 
 " But unhighlight them when done with search
-map <leader>/ <Esc>:noh<CR>
+map <leader>/ <Esc>:nohlsearch<CR>
 
 " Set cursorline
 set cursorline
@@ -110,6 +113,13 @@ inoremap jj <Esc>
 " Get to ex mode with ;
 nnoremap ; :
 
+" remap Y to yank from current cursor till end of line - to be consistent with D
+" and C
+nnoremap Y y$
+
+" Use space key to do single insertion
+nmap <Space> i_<Esc>r
+
 " Allow backspacing over everything in insertmode
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
@@ -128,9 +138,6 @@ set laststatus=2
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ /\ %L\ \ 
 set statusline +=\ Col:\ %c\ \ Ftp:\ %y\ \ \ %m
 
-" Incremental search is powerful
-set incsearch
-
 " Allow file completion with tab
 set wildmode=longest,list,full
 set wildmenu
@@ -146,6 +153,8 @@ set colorcolumn=82
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
