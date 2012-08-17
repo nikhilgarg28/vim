@@ -38,7 +38,7 @@ set directory=~/vim/tmp,.
 nmap <Leader>w :w!<CR>
 
 " I like to save files while writing. A quick save mapping for insert mode
-imap <Leader>w<Space> <Esc>:w!<CR>i
+imap ww <Esc>:w!<CR>a
 
 " show commands as you type them, who won't want that?
 set showcmd
