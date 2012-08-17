@@ -31,8 +31,8 @@ set timeoutlen=2000
 set ttimeoutlen=100
 
 " Don't clutter my projects with back up files, damnit!
-set backupdir=~/vim/tmp
-set directory=~/vim/tmp
+set backupdir=~/vim/tmp,.
+set directory=~/vim/tmp,.
 
 " Fast saving. <leader>w would save the file
 nmap <leader>w :w!<cr>
@@ -125,7 +125,8 @@ set cmdheight=2
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ /\ %L\ \ 
+set statusline +=\ Col:\ %c\ \ Ftp:\ %y\ \ \ %m
 
 " Incremental search is powerful
 set incsearch
