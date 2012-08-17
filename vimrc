@@ -35,7 +35,10 @@ set backupdir=~/vim/tmp,.
 set directory=~/vim/tmp,.
 
 " Fast saving. <leader>w would save the file
-nmap <leader>w :w!<cr>
+nmap <Leader>w :w!<CR>
+
+" I like to save files while writing. A quick save mapping for insert mode
+imap <Leader>w<Space> <Esc>:w!<CR>i
 
 " show commands as you type them, who won't want that?
 set showcmd
@@ -244,7 +247,10 @@ set ofu=syntaxcomplete#Complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " <leader>ce comments out from cursor to end of current line
-nmap <Leader>ce <leader>c$
+nmap <Leader>ce <Leader>c$
+
+" Even in insert mode <Leader>cc comments out the current line
+imap <Leader>cc <Esc><Leader>cc<CR>i
 
     
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
